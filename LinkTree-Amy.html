@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amy Cozart-Lundin | Cozyartz Media Group</title>
+    <meta name="description" content="Amy Cozart-Lundin - Instructional Designer, Multimedia Agency Co-founder, Non-profit Executive Director">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Karla:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --primary: #ff6b9d;
+            --secondary: #2a2a2a;
+            --accent: #ff8fb3;
+            --bg-main: #fef8fa;
+            --bg-card: #ffffff;
+            --text-dark: #1a1a1a;
+            --text-light: #666666;
+            --shadow: rgba(255, 107, 157, 0.15);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Karla', sans-serif;
+            background: var(--bg-main);
+            color: var(--text-dark);
+            min-height: 100vh;
+            padding: 2rem 1rem;
+            position: relative;
+            overflow-x: hidden;
+        }
+        
+        /* Enhanced Textured Background with multiple layers */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 15% 20%, rgba(255, 107, 157, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(255, 143, 179, 0.12) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(255, 182, 193, 0.08) 0%, transparent 50%),
+                repeating-linear-gradient(45deg, transparent, transparent 2px, rgba(255, 107, 157, 0.02) 2px, rgba(255, 107, 157, 0.02) 4px);
+            z-index: 0;
+            pointer-events: none;
+            animation: float 25s ease-in-out infinite;
+        }
+        
+        /* Subtle noise texture overlay */
+        body::after {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='1.2' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.04'/%3E%3C/svg%3E");
+            opacity: 0.6;
+            z-index: 0;
+            pointer-events: none;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0); }
+            33% { transform: translate(15px, -15px); }
+            66% { transform: translate(-10px, 10px); }
+        }
+        
+        .container {
+            max-width: 700px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+            animation: fadeIn 0.8s ease-out;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: slideDown 0.6s ease-out;
+        }
+        
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .profile-image {
+            width: 140px;
+            height: 140px;
+            border-radius: 50%;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 8px 24px var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border: 4px solid white;
+        }
+        
+        .profile-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+        }
+        
+        .pronouns {
+            color: var(--primary);
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+        
+        .tagline {
+            font-size: 1.05rem;
+            color: var(--text-dark);
+            font-weight: 400;
+            line-height: 1.6;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* About Section */
+        .about-section {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.6s ease-out 0.2s backwards;
+        }
+        
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .about-text {
+            color: var(--text-dark);
+            line-height: 1.8;
+            font-size: 1rem;
+        }
+        
+        /* Current Roles Section */
+        .roles-section {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.6s ease-out 0.3s backwards;
+        }
+        
+        .role-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .role-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .role-years {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .role-title {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .role-subtitle {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        /* Connect Section */
+        .connect-section {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: slideUp 0.6s ease-out 0.4s backwards;
+        }
+        
+        .connect-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .links-container {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .link-card {
+            background: var(--bg-card);
+            border: 2px solid transparent;
+            border-radius: 16px;
+            padding: 1.25rem 1.5rem;
+            text-decoration: none;
+            color: var(--text-dark);
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            overflow: hidden;
+            animation: slideUp 0.5s ease-out backwards;
+        }
+        
+        .link-card:nth-child(1) { animation-delay: 0.5s; }
+        .link-card:nth-child(2) { animation-delay: 0.55s; }
+        .link-card:nth-child(3) { animation-delay: 0.6s; }
+        .link-card:nth-child(4) { animation-delay: 0.65s; }
+        .link-card:nth-child(5) { animation-delay: 0.7s; }
+        .link-card:nth-child(6) { animation-delay: 0.75s; }
+        .link-card:nth-child(7) { animation-delay: 0.8s; }
+        .link-card:nth-child(8) { animation-delay: 0.85s; }
+        
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 107, 157, 0.1), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .link-card:hover::before {
+            left: 100%;
+        }
+        
+        .link-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--primary);
+            box-shadow: 0 12px 28px var(--shadow);
+        }
+        
+        .link-card:active {
+            transform: translateY(-2px);
+        }
+        
+        .link-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+            transition: transform 0.3s ease;
+        }
+        
+        .link-card:hover .link-icon {
+            transform: rotate(5deg) scale(1.1);
+        }
+        
+        .link-content {
+            flex: 1;
+        }
+        
+        .link-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+            color: var(--text-dark);
+        }
+        
+        .link-description {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+        
+        .link-arrow {
+            color: var(--primary);
+            font-size: 1.2rem;
+            opacity: 0;
+            transform: translateX(-10px);
+            transition: all 0.3s ease;
+        }
+        
+        .link-card:hover .link-arrow {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        /* Education Section */
+        .education-section {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            animation: slideUp 0.6s ease-out 0.9s backwards;
+        }
+        
+        .education-item {
+            margin-bottom: 1.5rem;
+        }
+        
+        .education-item:last-child {
+            margin-bottom: 0;
+        }
+        
+        .education-year {
+            font-weight: 700;
+            color: var(--primary);
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .education-degree {
+            font-weight: 700;
+            color: var(--text-dark);
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+        
+        .education-school {
+            color: var(--text-light);
+            font-size: 0.95rem;
+        }
+        
+        .footer {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            color: var(--text-light);
+            font-size: 0.85rem;
+            animation: fadeIn 1s ease-out 1s backwards;
+        }
+        
+        .footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--accent);
+        }
+        
+        /* Floating decorative elements */
+        .floating-icons {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+            overflow: hidden;
+        }
+        
+        .float-item {
+            position: absolute;
+            color: rgba(255, 107, 157, 0.15);
+            font-size: 2.5rem;
+            animation-timing-function: ease-in-out;
+            animation-iteration-count: infinite;
+        }
+        
+        .float-coffee {
+            top: 15%;
+            left: 8%;
+            animation: float-drift-1 20s infinite;
+        }
+        
+        .float-pencil {
+            top: 25%;
+            right: 12%;
+            animation: float-drift-2 18s infinite;
+        }
+        
+        .float-headphones {
+            top: 60%;
+            left: 10%;
+            animation: float-drift-3 22s infinite;
+        }
+        
+        .float-laptop {
+            bottom: 20%;
+            right: 8%;
+            animation: float-drift-4 19s infinite;
+        }
+        
+        .float-lightbulb {
+            top: 45%;
+            right: 15%;
+            animation: float-drift-5 21s infinite;
+        }
+        
+        .float-pen {
+            bottom: 35%;
+            left: 12%;
+            animation: float-drift-6 17s infinite;
+        }
+        
+        .float-book {
+            top: 70%;
+            right: 20%;
+            animation: float-drift-7 23s infinite;
+        }
+        
+        @keyframes float-drift-1 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(15px, -20px) rotate(5deg); }
+            50% { transform: translate(-10px, -30px) rotate(-3deg); }
+            75% { transform: translate(20px, -15px) rotate(4deg); }
+        }
+        
+        @keyframes float-drift-2 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            25% { transform: translate(-20px, 15px) rotate(-5deg); }
+            50% { transform: translate(-30px, -10px) rotate(3deg); }
+            75% { transform: translate(-15px, 20px) rotate(-4deg); }
+        }
+        
+        @keyframes float-drift-3 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            33% { transform: translate(20px, -15px) rotate(6deg); }
+            66% { transform: translate(-15px, 15px) rotate(-6deg); }
+        }
+        
+        @keyframes float-drift-4 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            30% { transform: translate(-25px, -20px) rotate(-4deg); }
+            60% { transform: translate(15px, -25px) rotate(5deg); }
+        }
+        
+        @keyframes float-drift-5 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            40% { transform: translate(18px, 22px) rotate(7deg); }
+            80% { transform: translate(-12px, -18px) rotate(-5deg); }
+        }
+        
+        @keyframes float-drift-6 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            35% { transform: translate(-18px, -25px) rotate(-6deg); }
+            70% { transform: translate(22px, 18px) rotate(4deg); }
+        }
+        
+        @keyframes float-drift-7 {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            20% { transform: translate(25px, -18px) rotate(8deg); }
+            40% { transform: translate(-20px, 15px) rotate(-7deg); }
+            60% { transform: translate(15px, -22px) rotate(5deg); }
+            80% { transform: translate(-18px, 20px) rotate(-6deg); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 640px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .about-section,
+            .roles-section,
+            .education-section {
+                padding: 1.5rem;
+            }
+            
+            .link-card {
+                padding: 1rem 1.25rem;
+            }
+            
+            .link-icon {
+                width: 40px;
+                height: 40px;
+                font-size: 1.1rem;
+            }
+            
+            .float-item {
+                font-size: 2rem;
+                opacity: 0.7;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Floating decorative elements -->
+    <div class="floating-icons">
+        <i class="fas fa-coffee float-item float-coffee"></i>
+        <i class="fas fa-pencil-alt float-item float-pencil"></i>
+        <i class="fas fa-headphones float-item float-headphones"></i>
+        <i class="fas fa-laptop float-item float-laptop"></i>
+        <i class="fas fa-lightbulb float-item float-lightbulb"></i>
+        <i class="fas fa-pen float-item float-pen"></i>
+        <i class="fas fa-book-open float-item float-book"></i>
+    </div>
+    
+    <div class="container">
+        <header class="header">
+            <div class="profile-image">
+                <img src="data:image/webp;base64,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" alt="Amy Cozart-Lundin">
+            </div>
+            <h1>Amy Cozart-Lundin</h1>
+            <p class="pronouns">(she/her)</p>
+            <p class="tagline">Instructional Designer | Multimedia Agency Co-founder | Non-profit Executive Director - <a href="https://pink9to5.org" target="_blank" style="color: var(--primary); text-decoration: none; font-weight: 600;">Pink 9to5.org</a></p>
+        </header>
+        
+        <section class="about-section">
+            <h2 class="section-title">About Me</h2>
+            <p class="about-text">...part learning strategist, part multimedia storyteller, and full-time champion of making training feel anything but boring. I blend heart, humor, and human-centered design to turn "have to" learning into "want to" experiences.</p>
+        </section>
+        
+        <section class="roles-section">
+            <h2 class="section-title">Current Roles</h2>
+            
+            <div class="role-item">
+                <div class="role-years">2025-Present</div>
+                <div class="role-title">Pink 9 to 5</div>
+                <div class="role-subtitle">Co-founder, Executive Director</div>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-years">2023-Present</div>
+                <div class="role-title">AutiMind, Inc.</div>
+                <div class="role-subtitle">Co-founder, CEO</div>
+            </div>
+            
+            <div class="role-item">
+                <div class="role-years">2016-Present</div>
+                <div class="role-title">Cozyartz Media Group</div>
+                <div class="role-subtitle">Co-founder, COO</div>
+            </div>
+        </section>
+        
+        <section class="connect-section">
+            <h2 class="connect-title">Connect With Me</h2>
+            
+            <div class="links-container">
+                <a href="mailto:amylundin@pm.me" class="link-card">
+                    <div class="link-icon">
+                        <i class="fas fa-envelope"></i>
+                    </div>
+                    <div class="link-content">
+                        <div class="link-title">Email Me</div>
+                        <div class="link-description">amylundin@pm.me</div>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+                
+                <a href="https://www.linkedin.com/in/amycozartlundin/" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="link-icon">
+                        <i class="fab fa-linkedin-in"></i>
+                    </div>
+                    <div class="link-content">
+                        <div class="link-title">LinkedIn</div>
+                        <div class="link-description">Let's connect professionally</div>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+                
+                <a href="https://www.facebook.com/amy.cozartlundin/" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="link-icon">
+                        <i class="fab fa-facebook-f"></i>
+                    </div>
+                    <div class="link-content">
+                        <div class="link-title">Facebook</div>
+                        <div class="link-description">Follow my updates</div>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+                
+                <a href="https://github.com/grammar-nerd" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="link-icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <div class="link-content">
+                        <div class="link-title">GitHub</div>
+                        <div class="link-description">Check out my code projects</div>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+                
+                <a href="https://coff.ee/acozartlunz" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="link-icon">
+                        <i class="fas fa-coffee"></i>
+                    </div>
+                    <div class="link-content">
+                        <div class="link-title">Buy Me a Coffee</div>
+                        <div class="link-description">Support my work</div>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+                
+                <a href="https://amylundin.me/" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="link-icon">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div class="link-content">
+                        <div class="link-title">Personal Website</div>
+                        <div class="link-description">Visit my portfolio</div>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+                
+                <a href="https://amycozartlundin.myportfolio.com/workz" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="link-icon">
+                        <i class="fas fa-camera"></i>
+                    </div>
+                    <div class="link-content">
+                        <div class="link-title">Portfolio</div>
+                        <div class="link-description">Explore my creative work</div>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+                
+                <a href="https://a.co/d/6BxCm81" class="link-card" target="_blank" rel="noopener noreferrer">
+                    <div class="link-icon">
+                        <i class="fas fa-book"></i>
+                    </div>
+                    <div class="link-content">
+                        <div class="link-title">My Book on Amazon</div>
+                        <div class="link-description">Check out my latest publication</div>
+                    </div>
+                    <i class="fas fa-arrow-right link-arrow"></i>
+                </a>
+            </div>
+        </section>
+        
+        <section class="education-section">
+            <h2 class="section-title">Education</h2>
+            
+            <div class="education-item">
+                <div class="education-year">2016</div>
+                <div class="education-degree">Master of Education, eLearning and Instructional Design</div>
+                <div class="education-school">Northeastern University</div>
+            </div>
+            
+            <div class="education-item">
+                <div class="education-year">2010</div>
+                <div class="education-degree">Bachelor of Arts, Multidisciplinary Studies</div>
+                <div class="education-school">Siena Heights University</div>
+            </div>
+        </section>
+        
+        <footer class="footer">
+            <p>© 2026 Amy Cozart-Lundin</p>
+        </footer>
+    </div>
+</body>
+</html>
